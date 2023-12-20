@@ -18,6 +18,8 @@
             transform-origin: center;
 
             margin-top: 0rem;
+
+            user-select: none;
         }
 
         @keyframes dots {
@@ -75,12 +77,14 @@
 
     <div id="search-box" class="search-box bottom" style="opacity: 0; transform: translateY(5rem); transition: 2.5s ease;">
         <span class="material-symbols-rounded">search</span>
-        <input id="input" type="text" class="input-search" placeholder="Ask anything">
+        <input onchange="respond()" id="input" type="text" class="input-search" placeholder="Ask anything" autocomplete="off">
     </div>
 
     <div class="absolute-centre">
         <h1 id="dots" class="dots">∴</h1>
     </div>
+
+    <h1 style="margin-top: 5rem; opacity: 0; transition: 0.25s ease;" class="absolute-centre" id="output"></h1>
 
     <script src="script.js"></script>
 </body>
