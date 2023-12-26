@@ -149,6 +149,11 @@ function respond() {
             output = `${binary}, ${subject} ${isOrNot} ${object}`;
         }
 
+        else {
+            invalidInput();
+            return false;
+        }
+
         document.getElementById("output").innerText = output;
 
         document.getElementById("output").style.opacity = "1";
@@ -173,4 +178,61 @@ function swapPronouns(sentence) {
         .replace(/###TEMP###/gi, 'I');
 
     return swappedSentence;
+}
+
+function invalidInput() {
+    document.getElementById("output").style.opacity = "0";
+
+    document.body.style.overflow = "hidden";
+
+    document.getElementById("dots").style.transition = "0.25s ease";
+    document.getElementById("navbar").style.transition = "0.25s ease";
+    document.getElementById("hub-button").style.transition = "0.25s ease";
+    document.getElementById("search-box").style.transition = "0.25s ease";
+
+    document.getElementById("dots").style.color = "red";
+    document.getElementById("dots").style.animation = "1s dots-final-error ease infinite alternate";
+    document.getElementById("navbar").className = "navbar-error";
+    document.getElementById("hub-button").className = "button-error";
+    document.getElementById("search-box").classList.add("search-box-error");
+
+    setTimeout(() => {
+        document.getElementById("dots").style.transition = "2.5s ease";
+        document.getElementById("navbar").style.transition = "2.5s ease";
+        document.getElementById("hub-button").style.transition = "2.5s ease";
+        document.getElementById("search-box").style.transition = "2.5s ease";
+
+        document.getElementById("navbar").style.transform = "translateY(100rem) rotate(45deg)";
+        document.getElementById("hub-button").style.transform = "translateY(50rem) rotate(450deg)";
+        document.getElementById("search-box").style.transform = "translateY(50rem) rotate(-50deg)";
+
+        document.getElementById("dots").style.animation = "5s ease dots-error reverse";
+    }, 1000);
+
+    setTimeout(() => {
+        const orb = document.createElement("div");
+        orb.className = "orb";
+        orb.classList.add("perfect-center");
+        orb.style.opacity = "0";
+
+        document.body.appendChild(orb);
+
+        setTimeout(() => {
+            document.getElementById("dots").remove();
+
+            orb.style.opacity = "1";
+            orb.style.transition = "30s ease";
+            orb.style.width = "25rem";
+            orb.style.height = "25rem";
+
+            setTimeout(() => {
+                orb.style.transition = "25s ease";
+                orb.style.opacity = "0";
+
+                setTimeout(() => {
+                    location.href = "https://churchof-chonk.github.io/hell";
+                }, 4000);
+            }, 6000);
+        }, 1000);
+    }, 5000);
 }
