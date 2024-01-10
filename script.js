@@ -1,3 +1,5 @@
+var predeterminedAnswers = localStorage.getItem("answers") || {};
+
 setTimeout(() => {
   document.getElementById("dots").style.animation = "dots-final 2.5s ease alternate infinite both";
   
@@ -9,6 +11,11 @@ setTimeout(() => {
 
   document.getElementById("hub-button").style.opacity = "1";
   document.getElementById("hub-button").style.transform = "translateX(0)";
+
+  setTimeout(() => {
+    document.getElementById("reset").style.opacity = "1";
+    document.getElementById("reset").style.transform = "translateX(0)";
+  }, 50);
 
   setTimeout(() => {
     document.getElementById("search-box").style.transition = "0.25s ease";
@@ -235,4 +242,9 @@ function invalidInput() {
       }, 6000);
     }, 1000);
   }, 5000);
+}
+
+function reset() {
+  localStorage.clear();
+  location.reload();
 }

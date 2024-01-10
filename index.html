@@ -113,18 +113,24 @@
       <h1>Oracle</h1>
     </div>
 
-    <button onclick="
-      if (document.referrer == 'https://churchof-chonk.github.io/') {
-        window.close();
-      }
+    <div class="row">
+      <button onclick="
+        if (document.referrer == 'https://churchof-chonk.github.io/') {
+          window.close();
+        }
+        else {
+          location.href = 'https://churchof-chonk.github.io';
+        }
+      " id="hub-button" style="opacity: 0; transform: translateX(-15rem); transition: 2.5s ease;">
+        <span class="material-symbols-rounded">hub</span>
+        Visit Chonk Hub
+      </button>
 
-      else {
-        location.href = 'https://churchof-chonk.github.io';
-      }
-    " id="hub-button" style="opacity: 0; transform: translateX(-15rem); transition: 2.5s ease;">
-      <span class="material-symbols-rounded">hub</span>
-      Visit Chonk Hub
-    </button>
+      <button style="opacity: 0; transform: translateX(-15rem); transition: 2.5s ease;" id="reset" onclick="reset()">
+        <span class="material-symbols-rounded">delete</span>
+        Reset
+      </button>
+    </div>
   </div>
 
   <div id="search-box" class="search-box bottom" style="opacity: 0; transform: translateY(5rem); transition: 2.5s ease;">
